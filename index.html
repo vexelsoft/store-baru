@@ -1,227 +1,264 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>VEXELSOFT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VEXELSOFT</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- ❌ TIDAK MERUBAH CSS KAMU SAMA SEKALI -->
 <style>
-/* ===== CSS KAMU ORIGINAL DI SINI (TIDAK DISENTUH) ===== */
+/* ====== (SEMUA CSS ASLI KAMU TETAP) ====== */
+/* tidak saya ubah sama sekali */
 </style>
-
 </head>
 
 <body>
 
 <div class="menu-overlay" onclick="toggleMenu()"></div>
 
-<!-- ================= SIDEBAR ================= -->
+<div class="mobile-header">
+    <div class="mobile-logo">
+        Vexelsoft <span>Bot <span>Whatsapp</span>
+    </div>
+
+    <button class="menu-toggle-btn" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+</div>
+
 <nav class="sidebar" id="sidebar">
 
-<button class="close-sidebar-btn" onclick="toggleMenu()">
-<i class="fas fa-times"></i>
-</button>
+    <button class="close-sidebar-btn" onclick="toggleMenu()">
+        <i class="fas fa-times"></i>
+    </button>
 
-<div class="logo-area">
-<i class="fas fa-mug-hot logo-icon"></i>
-<div class="logo-text">Angkringan <br><span>Nusantara</span></div>
-</div>
+    <div class="logo-area">
+        <i class="fas fa-mug-hot logo-icon"></i>
 
-<ul class="nav-menu">
+        <div class="logo-text">
+            Angkringan <br>
+            <span>Nusantara</span>
+        </div>
+    </div>
 
-<!-- ✔ TIDAK DIUBAH -->
-<li>
-<a href="#" onclick="switchTab('sewa'); closeMenuMobile()" id="nav-sewa" class="nav-link active">
-<i class="fas fa-server"></i> Sewa
-</a>
-</li>
+    <ul class="nav-menu">
 
-<li>
-<a href="#" onclick="switchTab('minuman'); closeMenuMobile()" id="nav-minuman" class="nav-link">
-<i class="fas fa-crown"></i> Premium User
-</a>
-</li>
+        <li>
+            <a href="#" onclick="switchTab('sewa'); closeMenuMobile()" id="nav-sewa" class="nav-link active">
+                <i class="fas fa-server"></i>
+                Sewa
+            </a>
+        </li>
 
-<!-- ✔ TAMBAHAN SAJA -->
-<li>
-<a href="#" onclick="switchTab('smm'); closeMenuMobile()" class="nav-link">
-<i class="fas fa-bolt"></i> Suntik Sosmed
-</a>
-</li>
+        <li>
+            <a href="#" onclick="switchTab('minuman'); closeMenuMobile()" id="nav-minuman" class="nav-link">
+                <i class="fas fa-crown"></i>
+Premium User
+            </a>
+        </li>
 
-</ul>
+        <!-- 🔥 TAMBAHAN MENU SUNTIK SOSMED -->
+        <li>
+            <a href="#" onclick="switchTab('smm'); closeMenuMobile()" id="nav-smm" class="nav-link">
+                <i class="fas fa-bolt"></i>
+Suntik Sosmed
+            </a>
+        </li>
+
+        <li>
+            <a href="#payment" onclick="closeMenuMobile()" class="nav-link">
+                <i class="fas fa-wallet"></i>
+                Pembayaran
+            </a>
+        </li>
+
+        <li>
+            <a href="#location" onclick="closeMenuMobile()" class="nav-link">
+                <i class="fas fa-location-dot"></i>
+                Lokasi
+            </a>
+        </li>
+
+    </ul>
+
 </nav>
 
-<!-- ================= MAIN ================= -->
 <div class="main-wrapper">
 
-<!-- ===== HERO (TIDAK DIUBAH) ===== -->
-<div class="hero-banner">
-<h1 class="hero-title">VEXELSOFT STORE</h1>
-<p class="hero-subtitle">
-Selamat datang di website bot WhatsApp kami.
-</p>
+    <div class="hero-banner">
+        <h1 class="hero-title">VEXELSOFT STORE</h1>
+        <p class="hero-subtitle">
+            Selamat datang di website bot WhatsApp kami — solusi otomatis yang dirancang untuk membantu aktivitas chatting menjadi lebih cepat, praktis, dan efisien.
+        </p>
+    </div>
+
+    <!-- ========================= SEWA ========================= -->
+    <div id="sewa">
+        <div class="section-title"><span>Paket Hemat</span></div>
+        <div id="grid-hemat" class="menu-grid"></div>
+
+        <div class="section-title"><span>Paket Premium</span></div>
+        <div id="grid-premium" class="menu-grid"></div>
+
+        <div class="section-title"><span>Paket Group</span></div>
+        <div id="grid-group" class="menu-grid"></div>
+    </div>
+
+    <!-- ========================= PREMIUM ========================= -->
+    <div id="minuman" style="display:none;">
+        <div class="section-title"><span>Premium User</span></div>
+        <div id="grid-minuman" class="menu-grid"></div>
+    </div>
+
+    <!-- ========================= 🔥 SMM (TAMBAHAN) ========================= -->
+    <div id="smm" style="display:none;">
+
+        <div class="info-card">
+
+            <div class="section-title">
+                <i class="fas fa-bolt" style="color:var(--accent-gold);"></i>
+                Suntik Sosmed
+            </div>
+
+            <select id="service" style="width:100%;padding:12px;border-radius:10px;margin-top:10px;">
+                <option>Loading layanan...</option>
+            </select>
+
+            <input id="target" placeholder="Link target" style="width:100%;padding:12px;margin-top:10px;border-radius:10px;">
+            <input id="quantity" type="number" placeholder="Jumlah" style="width:100%;padding:12px;margin-top:10px;border-radius:10px;">
+
+            <button onclick="orderSMM()" style="margin-top:10px;width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:10px;">
+                Order Sekarang
+            </button>
+
+            <div id="statusBox" style="margin-top:10px;font-size:14px;">
+                Status: menunggu...
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= PAYMENT ========================= -->
+    <div id="payment" class="info-card">
+        <div class="section-title">
+            <i class="fas fa-wallet" style="color:var(--accent-gold);"></i>
+            Metode Pembayaran
+        </div>
+
+        <p style="color:#777; margin-bottom:2rem;">
+            Scan QRIS atau Transfer Bank
+        </p>
+
+        <div style="text-align:center; margin-bottom:2rem;">
+            <img src="https://cdn.yupra.my.id/yp/nk9tfpgk.jpg" style="width:200px;border-radius:15px;">
+        </div>
+    </div>
+
+    <!-- LOCATION -->
+    <div id="location" class="info-card">
+        <div class="section-title">
+            Lokasi Kami
+        </div>
+
+        <div class="map-frame">
+            <iframe
+                src="https://maps.google.com/maps?q=Alun+alun+pasuruan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                width="100%" height="100%" style="border:0;">
+            </iframe>
+        </div>
+    </div>
+
 </div>
 
-<!-- ================= SEWA (NO CHANGE) ================= -->
-<div id="sewa">
-
-<div class="section-title"><span>Paket Hemat</span></div>
-<div id="grid-hemat" class="menu-grid"></div>
-
-<div class="section-title"><span>Paket Premium</span></div>
-<div id="grid-premium" class="menu-grid"></div>
-
-<div class="section-title"><span>Paket Group</span></div>
-<div id="grid-group" class="menu-grid"></div>
-
-</div>
-
-<!-- ================= PREMIUM (NO CHANGE) ================= -->
-<div id="minuman" style="display:none;">
-<div class="section-title"><span>Premium User</span></div>
-<div id="grid-minuman" class="menu-grid"></div>
-</div>
-
-<!-- ================= ✅ SUNTIK SOSMED (ONLY ADDITION) ================= -->
-<div id="smm" style="display:none;">
-
-<div class="section-title">
-Suntik Sosmed
-</div>
-
-<div class="smm-box">
-
-<select id="service">
-<option>Loading layanan...</option>
-</select>
-
-<input id="target" placeholder="Link target">
-<input id="quantity" type="number" placeholder="Jumlah">
-
-<button onclick="orderSMM()">Buat Pesanan</button>
-
-<div id="statusBox" style="margin-top:10px;color:#666;">
-Belum ada pesanan
-</div>
-
-</div>
-
-</div>
-
-<!-- ================= PAYMENT (NO CHANGE) ================= -->
-<div id="payment">
-<!-- TIDAK DIUBAH -->
-</div>
-
-<!-- ================= FOOTER (NO CHANGE) ================= -->
-<footer>
-© 2026 VEXELSOFT
-</footer>
-
-</div>
+<a href="https://wa.me/6285784085236" class="float-wa">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
 
-/* ================= TAB SWITCH (NO CHANGE LOGIC) ================= */
-function switchTab(id){
+/* ========================= SWITCH TAB ========================= */
+function switchTab(type){
+    document.getElementById('sewa').style.display='none';
+    document.getElementById('minuman').style.display='none';
+    document.getElementById('smm').style.display='none'; // 🔥 tambahan
 
-document.getElementById('sewa').style.display='none';
-document.getElementById('minuman').style.display='none';
-document.getElementById('smm').style.display='none';
-
-document.getElementById(id).style.display='block';
-
+    document.getElementById(type).style.display='block';
 }
 
-/* ================= MENU ================= */
+/* ========================= SIDEBAR ========================= */
 function toggleMenu(){
-document.getElementById('sidebar').classList.toggle('active');
-document.querySelector('.menu-overlay').classList.toggle('active');
+    document.getElementById('sidebar').classList.toggle('active');
+    document.querySelector('.menu-overlay').classList.toggle('active');
 }
 
 function closeMenuMobile(){
-if(window.innerWidth<=992) toggleMenu();
+    if(window.innerWidth <= 992) toggleMenu();
 }
 
-/* ================= 🔥 FIX API SERVICES ONLY ================= */
+/* ========================= 🔥 LOAD SERVICES FIX ========================= */
 async function loadServices(){
+    try{
+        const res = await fetch('/api/services');
+        const data = await res.json();
 
-try{
+        const select = document.getElementById('service');
 
-const res = await fetch('/api/services');
-const data = await res.json();
+        if(!data.services || !Array.isArray(data.services)){
+            select.innerHTML = '<option>Gagal load</option>';
+            return;
+        }
 
-const select = document.getElementById('service');
+        // 🔥 FIX: hanya ambil 1 layanan saja
+        const service = data.services[0];
 
-/* SAFE CHECK */
-if(!data || !data.status || !data.services){
-select.innerHTML = '<option>Gagal load layanan</option>';
-return;
+        select.innerHTML = `
+            <option value="${service.id}">
+                ${service.name} - Rp${service.price}
+            </option>
+        `;
+
+    }catch(e){
+        document.getElementById('service').innerHTML = '<option>Error API</option>';
+    }
 }
 
-select.innerHTML='';
-
-data.services.forEach(s=>{
-
-const opt=document.createElement('option');
-opt.value=s.id;
-opt.textContent=`${s.name} - Rp${s.price}`;
-
-select.appendChild(opt);
-
-});
-
-}catch(err){
-console.log(err);
-document.getElementById('service').innerHTML =
-'<option>Error load API</option>';
-}
-
-}
-
-/* ================= ORDER ================= */
+/* ========================= ORDER ========================= */
 async function orderSMM(){
 
-const service=document.getElementById('service').value;
-const target=document.getElementById('target').value;
-const quantity=document.getElementById('quantity').value;
-const status=document.getElementById('statusBox');
+    const service = document.getElementById('service').value;
+    const target = document.getElementById('target').value;
+    const quantity = document.getElementById('quantity').value;
+    const status = document.getElementById('statusBox');
 
-if(!service||!target||!quantity){
-status.innerHTML="Lengkapi data";
-return;
+    if(!service || !target || !quantity){
+        status.innerHTML = "Lengkapi data!";
+        return;
+    }
+
+    status.innerHTML = "Mengirim order...";
+
+    try{
+        const res = await fetch('/api/order',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({service,target,quantity})
+        });
+
+        const data = await res.json();
+
+        status.innerHTML = data.success
+            ? "Order berhasil"
+            : "Gagal: " + JSON.stringify(data);
+
+    }catch(e){
+        status.innerHTML = "Error order";
+    }
 }
 
-status.innerHTML="Processing...";
-
-try{
-
-const res=await fetch('/api/order',{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify({service,target,quantity})
-});
-
-const data=await res.json();
-
-if(data.order){
-status.innerHTML="✅ Success ID: "+data.order;
-}else{
-status.innerHTML="❌ Gagal order";
-}
-
-}catch(e){
-status.innerHTML="Error server";
-}
-
-}
-
-/* INIT */
+/* ========================= INIT ========================= */
 loadServices();
 
 </script>
