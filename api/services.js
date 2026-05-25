@@ -7,44 +7,72 @@ export default async function handler(req, res) {
   try {
 
     const response = await fetch(API_URL + "/api/services", {
-
       method: "POST",
-
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-
       body: new URLSearchParams({
         api_id: API_ID,
         api_key: API_KEY
       })
-
     });
 
     const text = await response.text();
 
+    let data;
+
     try {
-
-      const data = JSON.parse(text);
-
-      return res.status(200).json(data);
-
-    } catch {
+      data = JSON.parse(text);
+    } catch (e) {
+      console.log("❌ JSON PARSE ERROR:", text);
 
       return res.status(200).json({
+        status: false,
         error: true,
-        raw: text
+        message: "Invalid JSON from provider",
+        services: []
       });
-
     }
+
+    // 🔥 NORMALISASI WAJIB
+    if (!data || typeof data !== "object") {
+      return res.status(200).json({
+        status: false,
+        services: []
+      });
+    }
+
+    // 🔥 pastikan services selalu array
+    if (!Array.isArray(data.services)) {
+      data.services = [];
+    }
+
+    // 🔥 bersihkan data rusak
+    data.services = data.services.filter(s =>
+      s &&
+      typeof s === "object" &&
+      s.id &&
+      s.name &&
+      s.price
+    );
+
+    // optional: limit biar tidak berat
+    // data.services = data.services.slice(0, 1000);
+
+    return res.status(200).json({
+      status: true,
+      msg: "OK",
+      services: data.services
+    });
 
   } catch (e) {
 
     return res.status(500).json({
+      status: false,
       error: true,
-      message: e.message
+      message: e.message,
+      services: []
     });
 
   }
-
 }
