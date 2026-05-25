@@ -6,692 +6,700 @@
 <title>VEXELSOFT STORE</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 
 :root{
-    --bg:#f5f7fb;
-    --card:#ffffff;
-    --primary:#0f172a;
-    --accent:#7c3aed;
-    --accent2:#9333ea;
-    --text:#334155;
-    --soft:#e2e8f0;
-    --success:#22c55e;
+--bg:#f8f8f8;
+--primary:#2d1b18;
+--gold:#c5a065;
+--wa:#25D366;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Plus Jakarta Sans',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Plus Jakarta Sans',sans-serif;
 }
 
 body{
-    background:var(--bg);
-    color:var(--primary);
+background:var(--bg);
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+.mobile-header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:70px;
+background:#2d1b18;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 20px;
+z-index:9999;
+}
+
+.mobile-logo{
+color:#fff;
+font-size:20px;
+font-weight:700;
+}
+
+.mobile-logo span{
+color:var(--gold);
+}
+
+.menu-toggle-btn{
+background:none;
+border:none;
+color:#fff;
+font-size:24px;
 }
 
 /* SIDEBAR */
 
 .sidebar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:270px;
-    height:100vh;
-    background:#111827;
-    padding:30px 20px;
-    z-index:1000;
+position:fixed;
+top:0;
+left:-300px;
+width:280px;
+height:100%;
+background:#2d1b18;
+padding:30px 20px;
+z-index:99999;
+transition:.3s;
 }
 
-.logo{
-    color:#fff;
-    font-size:28px;
-    font-weight:800;
-    margin-bottom:40px;
+.sidebar.active{
+left:0;
 }
 
-.logo span{
-    color:#a855f7;
+.close-sidebar-btn{
+background:none;
+border:none;
+color:#fff;
+font-size:25px;
+position:absolute;
+right:20px;
+top:20px;
+}
+
+.logo-area{
+margin-top:40px;
+text-align:center;
+margin-bottom:40px;
+}
+
+.logo-icon{
+font-size:40px;
+color:var(--gold);
+margin-bottom:10px;
+}
+
+.logo-text{
+color:#fff;
+font-size:24px;
+font-weight:700;
+}
+
+.logo-text span{
+color:var(--gold);
 }
 
 .nav-menu{
-    list-style:none;
-}
-
-.nav-menu li{
-    margin-bottom:10px;
+list-style:none;
+display:flex;
+flex-direction:column;
+gap:10px;
 }
 
 .nav-link{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:15px;
-    border-radius:14px;
-    color:#cbd5e1;
-    text-decoration:none;
-    transition:.3s;
-    cursor:pointer;
+display:flex;
+align-items:center;
+gap:10px;
+padding:15px;
+border-radius:15px;
+text-decoration:none;
+color:#fff;
+transition:.3s;
 }
 
-.nav-link:hover,
-.nav-link.active{
-    background:rgba(255,255,255,0.08);
-    color:#fff;
+.nav-link.active,
+.nav-link:hover{
+background:rgba(255,255,255,.1);
+}
+
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+display:none;
+z-index:9998;
+}
+
+.menu-overlay.active{
+display:block;
 }
 
 /* MAIN */
 
-.main{
-    margin-left:270px;
-    padding:35px;
+.main-wrapper{
+padding:90px 20px 30px;
 }
 
-/* HERO */
-
-.hero{
-    background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.7)),
-    url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop');
-    background-size:cover;
-    background-position:center;
-    padding:60px;
-    border-radius:30px;
-    color:#fff;
-    margin-bottom:35px;
+.hero-banner{
+background:
+linear-gradient(to bottom,rgba(0,0,0,.5),rgba(0,0,0,.7)),
+url('https://cdn.odzre.my.id/ln2.jpg');
+background-size:cover;
+background-position:center;
+border-radius:25px;
+padding:40px 25px;
+color:#fff;
+margin-bottom:30px;
 }
 
-.hero h1{
-    font-size:42px;
-    margin-bottom:15px;
+.hero-title{
+font-size:32px;
+font-weight:800;
+margin-bottom:15px;
 }
 
-.hero p{
-    max-width:700px;
-    line-height:1.8;
-    opacity:.9;
+.hero-subtitle{
+line-height:1.7;
+font-size:15px;
 }
-
-/* TITLE */
 
 .section-title{
-    font-size:28px;
-    font-weight:800;
-    margin-bottom:25px;
+font-size:24px;
+font-weight:700;
+margin-bottom:20px;
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-/* GRID */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-    gap:25px;
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:18px;
+margin-bottom:40px;
 }
 
-/* CARD */
-
-.card{
-    background:var(--card);
-    border-radius:25px;
-    overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,.05);
-    transition:.3s;
+.food-card{
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+transition:.3s;
 }
 
-.card:hover{
-    transform:translateY(-6px);
+.food-card:hover{
+transform:translateY(-5px);
 }
 
-.card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
+.card-details{
+padding:20px;
 }
 
-.card-body{
-    padding:20px;
+.badge-best{
+background:#ffeded;
+color:red;
+padding:5px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:700;
+display:inline-flex;
+gap:5px;
+align-items:center;
+margin-bottom:15px;
 }
 
-.badge{
-    position:absolute;
-    margin:15px;
-    background:#fff;
-    color:#ef4444;
-    font-size:12px;
-    padding:6px 12px;
-    border-radius:30px;
-    font-weight:700;
+.menu-name{
+font-size:16px;
+font-weight:700;
+margin-bottom:10px;
 }
 
-.name{
-    font-size:18px;
-    font-weight:700;
-    margin-bottom:10px;
+.menu-rating{
+font-size:13px;
+color:#777;
+margin-bottom:15px;
 }
 
-.desc{
-    color:#64748b;
-    font-size:14px;
-    line-height:1.6;
-    margin-bottom:18px;
-}
-
-.bottom{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.price-row{
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
 .price{
-    color:var(--accent);
-    font-weight:800;
-    font-size:18px;
+font-size:18px;
+font-weight:700;
+color:var(--gold);
 }
 
-.btn{
-    border:none;
-    background:linear-gradient(45deg,var(--accent),var(--accent2));
-    color:#fff;
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    cursor:pointer;
+.btn-add{
+width:40px;
+height:40px;
+border:none;
+border-radius:50%;
+background:var(--primary);
+color:#fff;
+cursor:pointer;
 }
 
-/* PAYMENT */
+/* INFO */
 
-.payment-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-    gap:20px;
+.info-card{
+background:#fff;
+padding:25px;
+border-radius:25px;
+margin-bottom:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
 }
 
-.pay-card{
-    background:#fff;
-    padding:25px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.05);
+.method-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:15px;
+margin-top:20px;
 }
 
-.pay-card i{
-    font-size:30px;
-    margin-bottom:15px;
+.method-item{
+border:2px solid #eee;
+border-radius:20px;
+padding:20px;
+text-align:center;
 }
 
-/* SOSMED */
-
-.service-card{
-    background:#fff;
-    border-radius:25px;
-    padding:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.05);
+.map-frame{
+height:300px;
+border-radius:20px;
+overflow:hidden;
+margin-top:20px;
 }
 
-.service-name{
-    font-size:18px;
-    font-weight:700;
-    margin-bottom:15px;
-}
-
-.service-info{
-    color:#64748b;
-    line-height:1.7;
-    margin-bottom:20px;
-    font-size:14px;
-}
-
-.order-btn{
-    width:100%;
-    height:48px;
-    border:none;
-    border-radius:14px;
-    background:linear-gradient(45deg,var(--accent),var(--accent2));
-    color:#fff;
-    font-weight:700;
-    cursor:pointer;
-}
-
-/* FLOAT WA */
+/* WA */
 
 .float-wa{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    background:#25D366;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:32px;
-    text-decoration:none;
-    z-index:999;
-}
-
-/* MOBILE */
-
-.mobile-top{
-    display:none;
-}
-
-@media(max-width:992px){
-
-    .sidebar{
-        left:-300px;
-        transition:.3s;
-    }
-
-    .sidebar.active{
-        left:0;
-    }
-
-    .mobile-top{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        background:#111827;
-        color:#fff;
-        padding:18px 20px;
-        position:fixed;
-        width:100%;
-        top:0;
-        left:0;
-        z-index:1001;
-    }
-
-    .mobile-btn{
-        background:none;
-        border:none;
-        color:#fff;
-        font-size:24px;
-    }
-
-    .main{
-        margin-left:0;
-        padding:20px;
-        padding-top:100px;
-    }
-
-    .hero{
-        padding:35px 25px;
-    }
-
-    .hero h1{
-        font-size:32px;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:var(--wa);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-size:28px;
+text-decoration:none;
+z-index:999;
 }
 
 </style>
 </head>
 <body>
 
-<!-- MOBILE TOP -->
+<div class="menu-overlay" onclick="toggleMenu()"></div>
 
-<div class="mobile-top">
+<div class="mobile-header">
 
-    <div style="font-weight:800;">
-        VEXEL<span style="color:#a855f7;">SOFT</span>
-    </div>
+<div class="mobile-logo">
+VEXELSOFT <span>STORE</span>
+</div>
 
-    <button class="mobile-btn" onclick="toggleSidebar()">
-        <i class="fas fa-bars"></i>
-    </button>
+<button class="menu-toggle-btn" onclick="toggleMenu()">
+<i class="fas fa-bars"></i>
+</button>
 
 </div>
 
-<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
 
-<div class="sidebar" id="sidebar">
+<button class="close-sidebar-btn" onclick="toggleMenu()">
+<i class="fas fa-times"></i>
+</button>
 
-    <div class="logo">
-        VEXEL<span>SOFT</span>
-    </div>
+<div class="logo-area">
 
-    <ul class="nav-menu">
+<div class="logo-icon">
+<i class="fas fa-robot"></i>
+</div>
 
-        <li>
-            <a class="nav-link active" onclick="switchTab('home')" id="nav-home">
-                <i class="fas fa-house"></i>
-                Home
-            </a>
-        </li>
-
-        <li>
-            <a class="nav-link" onclick="switchTab('sewa')" id="nav-sewa">
-                <i class="fas fa-server"></i>
-                Sewa Bot
-            </a>
-        </li>
-
-        <li>
-            <a class="nav-link" onclick="switchTab('premium')" id="nav-premium">
-                <i class="fas fa-crown"></i>
-                Premium User
-            </a>
-        </li>
-
-        <li>
-            <a class="nav-link" onclick="switchTab('sosmed')" id="nav-sosmed">
-                <i class="fas fa-rocket"></i>
-                Suntik Sosmed
-            </a>
-        </li>
-
-        <li>
-            <a class="nav-link" onclick="switchTab('payment')" id="nav-payment">
-                <i class="fas fa-wallet"></i>
-                Payment
-            </a>
-        </li>
-
-    </ul>
+<div class="logo-text">
+VEXELSOFT <br>
+<span>STORE</span>
+</div>
 
 </div>
 
-<!-- MAIN -->
+<ul class="nav-menu">
 
-<div class="main">
+<li>
+<a href="#" onclick="switchTab('sewa')" id="nav-sewa" class="nav-link active">
+<i class="fas fa-server"></i>
+Sewa Bot
+</a>
+</li>
 
-    <!-- HOME -->
+<li>
+<a href="#" onclick="switchTab('minuman')" id="nav-minuman" class="nav-link">
+<i class="fas fa-bolt"></i>
+Suntik Sosmed
+</a>
+</li>
 
-    <div id="home" class="tab">
+<li>
+<a href="#payment" class="nav-link">
+<i class="fas fa-wallet"></i>
+Pembayaran
+</a>
+</li>
 
-        <div class="hero">
+<li>
+<a href="#location" class="nav-link">
+<i class="fas fa-location-dot"></i>
+Lokasi
+</a>
+</li>
 
-            <h1>VEXELSOFT STORE</h1>
+</ul>
 
-            <p>
-                Website layanan bot WhatsApp, premium user, dan suntik sosial media otomatis dengan sistem modern dan cepat.
-            </p>
+</nav>
 
-        </div>
+<div class="main-wrapper">
 
-    </div>
+<div class="hero-banner">
 
-    <!-- SEWA -->
+<h1 class="hero-title">
+VEXELSOFT STORE
+</h1>
 
-    <div id="sewa" class="tab" style="display:none;">
-
-        <div class="section-title">
-            Paket Sewa Bot
-        </div>
-
-        <div class="grid" id="sewa-container"></div>
-
-    </div>
-
-    <!-- PREMIUM -->
-
-    <div id="premium" class="tab" style="display:none;">
-
-        <div class="section-title">
-            Premium User
-        </div>
-
-        <div class="grid" id="premium-container"></div>
-
-    </div>
-
-    <!-- SOSMED -->
-
-    <div id="sosmed" class="tab" style="display:none;">
-
-        <div class="section-title">
-            Suntik Sosmed
-        </div>
-
-        <div class="grid" id="services-container">
-
-            <div class="service-card">
-
-                <div class="service-name">
-                    Instagram Followers
-                </div>
-
-                <div class="service-info">
-                    Min: 100<br>
-                    Max: 100000<br>
-                    Refill: Yes
-                </div>
-
-                <button class="order-btn">
-                    Order
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- PAYMENT -->
-
-    <div id="payment" class="tab" style="display:none;">
-
-        <div class="section-title">
-            Payment
-        </div>
-
-        <div class="payment-grid">
-
-            <div class="pay-card">
-                <i class="fas fa-wallet" style="color:#ee4d2d;"></i>
-                <h3>ShopeePay</h3>
-                <p>083875543395</p>
-            </div>
-
-            <div class="pay-card">
-                <i class="fas fa-wallet" style="color:#00AADC;"></i>
-                <h3>GoPay</h3>
-                <p>083875543395</p>
-            </div>
-
-            <div class="pay-card">
-                <i class="fas fa-wallet" style="color:#008CFF;"></i>
-                <h3>DANA</h3>
-                <p>083875543395</p>
-            </div>
-
-        </div>
-
-    </div>
+<p class="hero-subtitle">
+Website bot WhatsApp modern dengan fitur sewa bot, premium user, dan suntik sosial media otomatis.
+</p>
 
 </div>
 
-<!-- WA -->
+<!-- SEWA -->
 
-<a href="https://wa.me/6281234567890" class="float-wa" target="_blank">
-    <i class="fab fa-whatsapp"></i>
+<div id="sewa">
+
+<div class="section-title">
+Paket Hemat
+</div>
+
+<div class="menu-grid">
+
+<div class="food-card">
+
+<div class="card-details">
+
+<div class="badge-best">
+<i class="fas fa-fire"></i>
+TERLARIS
+</div>
+
+<div class="menu-name">
+Paket Hemat 1 Tahun
+</div>
+
+<div class="menu-rating">
+Sewa bot WhatsApp 1 tahun
+</div>
+
+<div class="price-row">
+
+<div class="price">
+Rp 80.000
+</div>
+
+<button class="btn-add">
+<i class="fas fa-eye"></i>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SOSMED -->
+
+<div id="minuman" style="display:none;">
+
+<div class="section-title">
+Suntik Sosmed
+</div>
+
+<div id="grid-minuman" class="menu-grid"></div>
+
+</div>
+
+<!-- PAYMENT -->
+
+<div id="payment" class="info-card">
+
+<div class="section-title">
+<i class="fas fa-wallet"></i>
+Pembayaran
+</div>
+
+<div style="text-align:center;margin-bottom:25px;">
+
+<img
+src="https://cdn.yupra.my.id/yp/nk9tfpgk.jpg"
+style="
+width:200px;
+border-radius:20px;
+">
+
+</div>
+
+<div class="method-grid">
+
+<div class="method-item">
+<i class="fas fa-wallet"
+style="font-size:25px;color:#ee4d2d;margin-bottom:10px;"></i>
+
+<div style="font-weight:700;">
+ShopeePay
+</div>
+
+<div style="font-size:13px;color:#777;">
+083875543395
+</div>
+
+</div>
+
+<div class="method-item">
+
+<i class="fas fa-wallet"
+style="font-size:25px;color:#008CBA;margin-bottom:10px;"></i>
+
+<div style="font-weight:700;">
+DANA
+</div>
+
+<div style="font-size:13px;color:#777;">
+083875543395
+</div>
+
+</div>
+
+<div class="method-item">
+
+<i class="fas fa-mobile-screen-button"
+style="font-size:25px;color:#00AADC;margin-bottom:10px;"></i>
+
+<div style="font-weight:700;">
+GoPay
+</div>
+
+<div style="font-size:13px;color:#777;">
+083875543395
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- LOCATION -->
+
+<div id="location" class="info-card">
+
+<div class="section-title">
+<i class="fas fa-map-location-dot"></i>
+Lokasi Kami
+</div>
+
+<div class="map-frame">
+
+<iframe
+src="https://maps.google.com/maps?q=Yogyakarta&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%"
+height="100%"
+style="border:0;">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="https://wa.me/6281234567890"
+class="float-wa"
+target="_blank">
+
+<i class="fab fa-whatsapp"></i>
+
 </a>
 
 <script>
 
-/* DATA */
+/* MENU */
 
-const sewaBot = [
+function toggleMenu(){
 
-{
-    name:"Paket Hemat 1 Bulan",
-    price:"Rp 10.000",
-    desc:"Sewa bot WhatsApp selama 1 bulan.",
-    img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-    best:true
-},
+document.getElementById('sidebar')
+.classList.toggle('active');
 
-{
-    name:"Paket Hemat 1 Tahun",
-    price:"Rp 80.000",
-    desc:"Sewa bot WhatsApp selama 1 tahun.",
-    img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-    best:false
-}
-
-];
-
-const premiumUser = [
-
-{
-    name:"Premium User 1 Bulan",
-    price:"Rp 5.000",
-    desc:"Premium user selama 1 bulan.",
-    img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-    best:true
-},
-
-{
-    name:"Premium User 2 Bulan",
-    price:"Rp 10.000",
-    desc:"Premium user selama 2 bulan.",
-    img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-    best:false
-}
-
-];
-
-/* RENDER */
-
-function renderCards(data, containerId){
-
-    const container = document.getElementById(containerId);
-
-    container.innerHTML = "";
-
-    data.forEach(item => {
-
-        container.innerHTML += `
-        <div class="card">
-
-            ${item.best ? `<div class="badge">TERLARIS</div>` : ''}
-
-            <img src="${item.img}">
-
-            <div class="card-body">
-
-                <div class="name">
-                    ${item.name}
-                </div>
-
-                <div class="desc">
-                    ${item.desc}
-                </div>
-
-                <div class="bottom">
-
-                    <div class="price">
-                        ${item.price}
-                    </div>
-
-                    <button class="btn">
-                        <i class="fas fa-eye"></i>
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-        `;
-
-    });
+document.querySelector('.menu-overlay')
+.classList.toggle('active');
 
 }
 
-/* TAB */
+function switchTab(type){
 
-function switchTab(id){
+document.getElementById('sewa').style.display='none';
+document.getElementById('minuman').style.display='none';
 
-    document.querySelectorAll('.tab')
-    .forEach(tab => {
-        tab.style.display = 'none';
-    });
+document.getElementById(type).style.display='block';
 
-    document.getElementById(id)
-    .style.display = 'block';
+document.querySelectorAll('.nav-link')
+.forEach(el=>el.classList.remove('active'));
 
-    document.querySelectorAll('.nav-link')
-    .forEach(nav => nav.classList.remove('active'));
+document.getElementById('nav-'+type)
+.classList.add('active');
 
-    document.getElementById('nav-' + id)
-    .classList.add('active');
-
-    if(window.innerWidth <= 992){
-        toggleSidebar();
-    }
+toggleMenu();
 
 }
 
-/* SIDEBAR */
+/* LOAD SERVICES */
 
-function toggleSidebar(){
+async function loadSosmedServices(){
 
-    document.getElementById('sidebar')
-    .classList.toggle('active');
+const container=document.getElementById('grid-minuman');
 
-}
+container.innerHTML=`
+<div style="
+padding:20px;
+font-weight:700;
+">
+Loading layanan...
+</div>
+`;
 
-/* LOAD API SOSMED */
+try{
 
-async function loadServices(){
+const response=await fetch('/api/services');
 
-    try{
+const data=await response.json();
 
-        const req = await fetch('/api/services');
+container.innerHTML='';
 
-        const data = await req.json();
+if(!Array.isArray(data)){
 
-        const container = document.getElementById('services-container');
+container.innerHTML=`
+<div style="
+padding:20px;
+color:red;
+font-weight:700;
+">
+Gagal mengambil layanan
+</div>
+`;
 
-        container.innerHTML = "";
-
-        data.forEach(service => {
-
-            container.innerHTML += `
-            <div class="service-card">
-
-                <div class="service-name">
-                    ${service.name}
-                </div>
-
-                <div class="service-info">
-                    Min: ${service.min}<br>
-                    Max: ${service.max}<br>
-                    Price: Rp ${service.price}
-                </div>
-
-                <button class="order-btn">
-                    Order
-                </button>
-
-            </div>
-            `;
-
-        });
-
-    }catch(err){
-
-        console.log(err);
-
-    }
+return;
 
 }
 
-/* INIT */
+data.forEach(item=>{
 
-renderCards(sewaBot, 'sewa-container');
-renderCards(premiumUser, 'premium-container');
+const card=`
+<div class="food-card">
 
-loadServices();
+<div class="card-details">
+
+<div class="menu-name">
+${item.name}
+</div>
+
+<div class="menu-rating">
+${item.category || 'Sosmed'}
+</div>
+
+<div style="
+font-size:13px;
+color:#777;
+margin-bottom:15px;
+line-height:1.7;
+">
+
+Min: ${item.min}
+<br>
+Max: ${item.max}
+
+</div>
+
+<div class="price-row">
+
+<div class="price">
+Rp ${item.price || item.rate}
+</div>
+
+<button class="btn-add"
+onclick="orderNow('${item.id}')">
+
+<i class="fas fa-cart-shopping"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+container.innerHTML += card;
+
+});
+
+}catch(err){
+
+container.innerHTML=`
+<div style="
+padding:20px;
+color:red;
+font-weight:700;
+">
+Tidak bisa mengambil layanan API
+</div>
+`;
+
+console.log(err);
+
+}
+
+}
+
+function orderNow(id){
+
+alert('Order layanan ID: '+id);
+
+}
+
+loadSosmedServices();
 
 </script>
 
