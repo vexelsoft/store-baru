@@ -547,39 +547,79 @@ function switchTab(type){
 LOAD SERVICES
 ========================= */
 
+<script>
+
 async function loadServices(){
 
     const select =
     document.getElementById('serviceSelect');
 
     select.innerHTML =
-    `<option>Loading...</option>`;
+    `<option>Loading layanan...</option>`;
 
     try{
 
         const res =
         await fetch('/api/services');
 
-        const data =
+        const result =
         await res.json();
+
+        console.log(result);
+
+        let services = [];
+
+        // FORMAT ARRAY LANGSUNG
+        if(Array.isArray(result)){
+
+            services = result;
+
+        }
+
+        // FORMAT { data: [] }
+        else if(Array.isArray(result.data)){
+
+            services = result.data;
+
+        }
+
+        // FORMAT { services: [] }
+        else if(Array.isArray(result.services)){
+
+            services = result.services;
+
+        }
+
+        // FORMAT GAGAL
+        else{
+
+            select.innerHTML =
+            `<option>Tidak ada layanan</option>`;
+
+            return;
+
+        }
 
         select.innerHTML = '';
 
-        data.forEach(service => {
+        services.forEach(service => {
 
             const option =
             document.createElement('option');
 
-            option.value = service.id;
+            option.value =
+            service.id || service.service;
 
             option.textContent =
-            `${service.name} | Rp ${service.price}`;
+            `${service.name || 'Tanpa Nama'} | Rp ${service.price || service.rate || '0'}`;
 
             select.appendChild(option);
 
         });
 
-    }catch(e){
+    }catch(err){
+
+        console.log(err);
 
         select.innerHTML =
         `<option>Gagal memuat layanan</option>`;
@@ -589,6 +629,7 @@ async function loadServices(){
 }
 
 loadServices();
+
 
 /* =========================
 CREATE ORDER
