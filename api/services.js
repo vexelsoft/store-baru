@@ -20,71 +20,43 @@ export default async function handler(req, res) {
 
     const text = await response.text();
 
-    // 🔥 DETECT HTML / NON JSON
-    if (!text.trim().startsWith("{")) {
-      return res.status(200).json({
-        status: false,
-        message: "Invalid response format (not JSON)",
-        services: []
-      });
-    }
-
     let data;
+
     try {
       data = JSON.parse(text);
     } catch (e) {
       return res.status(200).json({
         status: false,
-        message: "JSON parse error",
-        services: []
+        services: [],
+        message: "JSON parse error"
       });
     }
 
-    // 🔥 HARD GUARD (INI YANG PENTING)
-    let services = [];
-
-    if (Array.isArray(data.services)) {
-      services = data.services;
+    // pastikan array
+    if (!Array.isArray(data.services)) {
+      return res.status(200).json({
+        status: false,
+        services: [],
+        message: "Services bukan array"
+      });
     }
 
-    // kalau ternyata string → paksa kosong
-    if (typeof data.services === "string") {
-      services = [];
-    }
-
-    // kalau object aneh → reset
-    if (!Array.isArray(services)) {
-      services = [];
-    }
-
-    // 🔥 CLEAN + VALIDATE STRICT
-    services = services
-      .filter(s =>
-        s &&
-        typeof s === "object" &&
-        typeof s.id !== "undefined" &&
-        typeof s.name === "string"
-      )
-      .map(s => ({
-        id: s.id,
-        name: s.name,
-        category: s.category || "Unknown",
-        price: Number(s.price || 0)
-      }));
+    // 🔥 AMBIL 1 LAYANAN SAJA
+    const service = data.services[0];
 
     return res.status(200).json({
       status: true,
-      total: services.length,
-      services
+      services: service ? [service] : []
     });
 
   } catch (e) {
 
     return res.status(500).json({
       status: false,
-      message: e.message,
-      services: []
+      services: [],
+      message: e.message
     });
 
   }
+
 }
