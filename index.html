@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VEXELSOFT</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+/* --- ROOT VARIABEL --- */
+:root {
+    --bg-color: #fdfbf7;
+    --primary-dark: #2d1b18;
+    --primary-brown: #3e2723;
+    --accent-gold: #c5a065;
+    --accent-light: #e6dace;
+    --shadow-soft: 0 10px 40px -10px rgba(62, 39, 35, 0.08);
+    --shadow-hover: 0 20px 50px -10px rgba(62, 39, 35, 0.15);
+    --wa-green: #25D366;
+}
+
+/* --- GLOBAL RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-color);
+    background-image:
+        radial-gradient(circle at 0% 0%, rgba(197, 160, 101, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(62, 39, 35, 0.05) 0%, transparent 50%);
+    color: var(--primary-dark);
+    overflow-x: hidden;
+}
+
+/* --- MOBILE HEADER --- */
+.mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(62, 39, 35, 0.98);
+    backdrop-filter: blur(15px);
+    z-index: 1001;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.mobile-logo {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+}
+
+.mobile-logo span {
+    color: var(--accent-gold);
+    font-style: italic;
+}
+
+.menu-toggle-btn {
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background: rgba(62, 39, 35, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 1002;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+}
+
+.close-sidebar-btn {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+}
+
+.logo-area {
+    text-align: center;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 1.5rem;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.logo-text span {
+    color: var(--accent-gold);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    padding: 14px 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1001;
+    display: none;
+}
+
+.menu-overlay.active {
+    display: block;
+}
+
+/* --- MAIN --- */
+.main-wrapper {
+    margin-left: 280px;
+    padding: 2rem 3rem;
+    min-height: 100vh;
+    width: calc(100% - 280px);
+}
+
+/* HERO */
+.hero-banner {
+    background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(45,27,24,0.8)),
+        url('https://cdn.odzre.my.id/ln2.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+    padding: 4rem 3rem;
+    color: #fff;
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 40px rgba(62,39,35,0.3);
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero-subtitle {
+    opacity: 0.9;
+    font-size: 1.1rem;
+    max-width: 700px;
+    line-height: 1.7;
+}
+
+/* SECTION */
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-title::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(62,39,35,0.2), transparent);
+}
+
+/* MENU GRID */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+    gap: 25px;
+    margin-bottom: 4rem;
+}
+
+/* CARD */
+.food-card {
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: 0.4s;
+    border: 1px solid rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+.food-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-img-box {
+    height: 180px;
+    overflow: hidden;
+}
+
+.card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-details {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.badge-best {
+    position: absolute;
+    margin: 15px;
+    background: rgba(255,255,255,0.95);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #d32f2f;
+}
+
+.menu-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.menu-rating {
+    color: #ffc107;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+}
+
+.price-row {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.btn-add {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-brown);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* INFO CARD */
+.info-card {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 30px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 3rem;
+}
+
+/* PAYMENT */
+.method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 15px;
+    margin-top: 2rem;
+}
+
+.method-item {
+    border: 2px solid #f0f0f0;
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+/* MAP */
+.map-frame {
+    border-radius: 24px;
+    overflow: hidden;
+    height: 350px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* WA */
+.float-wa {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background: var(--wa-green);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 2rem;
+    z-index: 9999;
+}
+
+/* MOBILE */
+@media (max-width: 992px) {
+
+    .mobile-header {
+        display: flex;
+    }
+
+    .sidebar {
+        left: -300px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .close-sidebar-btn {
+        display: block;
+    }
+
+    .sidebar .logo-area {
+        display: none;
+    }
+
+    .main-wrapper {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.5rem;
+        padding-top: 100px;
+    }
+
+    .hero-banner {
+        padding: 3rem 1.5rem;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .card-img-box {
+        height: 130px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="menu-overlay" onclick="toggleMenu()"></div>
+
+<div class="mobile-header">
+    <div class="mobile-logo">
+        Vexelsoft <span>Bot <span>Whatsapp</span>
+    </div>
+
+    <button class="menu-toggle-btn" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+</div>
+
+<nav class="sidebar" id="sidebar">
+
+    <button class="close-sidebar-btn" onclick="toggleMenu()">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <div class="logo-area">
+        <i class="fas fa-mug-hot logo-icon"></i>
+
+        <div class="logo-text">
+            Angkringan <br>
+            <span>Nusantara</span>
+        </div>
+    </div>
+
+    <ul class="nav-menu">
+
+        <li>
+            <a href="#" onclick="switchTab('sewa'); closeMenuMobile()" id="nav-sewa" class="nav-link active">
+                <i class="fas fa-server"></i>
+                Sewa
+            </a>
+        </li>
+
+        <li>
+            <a href="#" onclick="switchTab('minuman'); closeMenuMobile()" id="nav-minuman" class="nav-link">
+                <i class="fas fa-crown"></i>
+Premium User
+            </a>
+        </li>
+
+        <li>
+            <a href="#payment" onclick="closeMenuMobile()" class="nav-link">
+                <i class="fas fa-wallet"></i>
+                Pembayaran
+            </a>
+        </li>
+
+        <li>
+            <a href="#location" onclick="closeMenuMobile()" class="nav-link">
+                <i class="fas fa-location-dot"></i>
+                Lokasi
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+<div class="main-wrapper">
+
+    <div class="hero-banner">
+
+        <h1 class="hero-title">VEXELSOFT STORE</h1>
+
+        <p class="hero-subtitle">
+            Selamat datang di website bot WhatsApp kami — solusi otomatis yang dirancang untuk membantu aktivitas chatting menjadi lebih cepat, praktis, dan efisien.
+        </p>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- TAB SEWA -->
+    <!-- ========================= -->
+
+    <div id="sewa">
+
+        <div class="section-title">
+            <span>Paket Hemat</span>
+        </div>
+
+        <div id="grid-hemat" class="menu-grid"></div>
+
+        <div class="section-title">
+            <span>Paket Premium</span>
+        </div>
+
+        <div id="grid-premium" class="menu-grid"></div>
+
+        <div class="section-title">
+            <span>Paket Group</span>
+        </div>
+
+        <div id="grid-group" class="menu-grid"></div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- TAB MINUMAN -->
+    <!-- ========================= -->
+
+    <div id="minuman" style="display:none;">
+
+        <div class="section-title">
+            <span>Premium User</span>
+        </div>
+
+        <div id="grid-minuman" class="menu-grid"></div>
+
+    </div>
+
+    <!-- PAYMENT -->
+    <div id="payment" class="info-card">
+
+        <div class="section-title">
+            <i class="fas fa-wallet" style="color:var(--accent-gold);"></i>
+            Metode Pembayaran
+        </div>
+
+        <p style="color:#777; margin-bottom:2rem;">
+            Scan QRIS atau Transfer Bank
+        </p>
+
+        <div style="text-align:center; margin-bottom:2rem;">
+
+            <div style="
+                background:#fff;
+                border:2px dashed #ccc;
+                width:200px;
+                height:200px;
+                margin:0 auto;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                border-radius:20px;
+            ">
+                <img src="https://cdn.yupra.my.id/yp/nk9tfpgk.jpg" alt="QRIS" style="width:80%;">
+            </div>
+
+            <div style="margin-top:10px; font-weight:bold;">
+                SCAN QRIS
+            </div>
+
+        </div>
+
+<div class="method-grid">
+
+    <!-- SHOPEEPAY -->
+    <div class="method-item">
+        <i class="fas fa-wallet" style="font-size: 1.5rem; color: #ee4d2d; margin-bottom: 10px;"></i>
+        <div style="font-weight:700;">ShopeePay</div>
+        <div style="font-size:0.85rem; color:#888;">083875543395</div>
+    </div>
+
+    <!-- DANA -->
+    <div class="method-item">
+        <i class="fas fa-wallet" style="font-size: 1.5rem; color: #008CBA; margin-bottom: 10px;"></i>
+        <div style="font-weight:700;">DANA</div>
+        <div style="font-size:0.85rem; color:#888;">083875543395</div>
+    </div>
+
+    <!-- GOPAY -->
+    <div class="method-item">
+        <i class="fas fa-mobile-screen-button" style="font-size: 1.5rem; color: #00AADC; margin-bottom: 10px;"></i>
+        <div style="font-weight:700;">GoPay</div>
+        <div style="font-size:0.85rem; color:#888;">083875543395</div>
+    </div>
+
+</div>
+
+    </div>
+
+    <!-- LOCATION -->
+    <div id="location" class="info-card">
+
+        <div class="section-title">
+            <i class="fas fa-map-marked-alt" style="color:var(--accent-gold);"></i>
+            Lokasi Kami
+        </div>
+
+        <div class="map-frame">
+
+            <iframe
+                src="https://maps.google.com/maps?q=Alun+alun+pasuruan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+        <div style="margin-top:1.5rem; font-weight:500;">
+            <i class="fas fa-location-dot" style="margin-right:10px; color:var(--accent-gold);"></i>
+            Jl. Alun-Alun Selatan, Kelurahan Kebonsari, Kecamatan Panggungrejo, Kota Pasuruan, Jawa Timur
+        </div>
+
+    </div>
+
+    <footer style="
+        text-align:center;
+        color:#999;
+        font-size:0.85rem;
+        margin-top:3rem;
+        padding-bottom:2rem;
+    ">
+        © 2026 Angkringan Nuansa Premium. All rights reserved.
+    </footer>
+
+</div>
+
+<a href="https://wa.me/6281234567890?text=Halo%20Admin" target="_blank" class="float-wa">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+
+/* =========================
+DATA
+========================= */
+
+const paketHemat = [
+
+    {
+        name: "Paket Hemat 1 Tahun",
+        price: "Rp 80.000",
+        desc: "Sewa bot WhatsApp untuk grup selama 1 tahun dengan harga lebih hemat",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: true,
+        rate: 5.0
+    },
+
+    {
+        name: "Paket Hemat 3 Bulan",
+        price: "Rp 30.000",
+        desc: "Sewa bot WhatsApp untuk grup selama 3 bulan dengan harga lebih hemat",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: false,
+        rate: 4.9
+    },
+    {
+        name: "Paket Hemat 1 Bulan",
+        price: "Rp 10.000",
+        desc: "Sewa bot WhatsApp untuk grup selama 1 bulan dengan harga lebih hemat",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: true,
+        rate: 4.9
+    },
+
+    {
+        name: "Paket Hemat 15",
+        price: "Rp 5.000",
+        desc: "Sewa bot WhatsApp untuk grup selama 15 hari dengan harga lebih hemat",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: false,
+        rate: 4.8
+    }
+    
+
+];
+
+
+
+const paketPremium = [
+
+    {
+        name: "Paket Reguler 1 Tahun",
+        price: "Rp 100.000",
+        desc: "Sewa bot Whatsapp untuk grup selama 1 tahun dan free premium user 15 orang",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: true,
+        rate: 5.0
+    },
+
+    {
+        name: "Paket Reguler 3 Bulan",
+        price: "Rp 35.000",
+        desc: "Sewa bot Whatsapp untuk grup selama 3 bulan dan free premium user untuk 8 orang",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: false,
+        rate: 4.9
+    },
+    {
+        name: "Paket Reguler 2 Bulan",
+        price: "Rp 25.000",
+        desc: "Sewa bot Whatsapp untuk grup selama 2 bulan dan free premium user untuk 5 orang",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: false,
+        rate: 4.9
+    },
+    {
+        name: "Paket Reguler 1 Bulan",
+        price: "Rp 15.000",
+        desc: "Sewa bot Whatsapp untuk grup selama 1 bulan dan free premium user untuk 3 orang",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: false,
+        rate: 4.9
+    }
+
+];
+
+
+
+const paketGroup = [
+
+    {
+        name: "Paket Premium Group 1 Tahun",
+        price: "Rp 130.000",
+        desc: "Paket grup premium 1 tahun dan free money 50JT untuk 15 orang",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: true,
+        rate: 5.0
+    },
+
+    {
+        name: "Paket Premium Group 1 Bulan",
+        price: "Rp 25.000",
+        desc: "Paket grup premium 1 bulan dan free money 5JT untuk 5 orang",
+        img: "https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+        best: false,
+        rate: 4.7
+    }
+
+];
+
+const minuman = [
+
+{
+    name:"Premium User 1 Bulan",
+    price:"Rp 5.000",
+    desc:"Premium user selama 1 bulan dengan akses fitur premium bot.",
+    img:"https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+    best:true,
+    rate:5.0
+},
+
+{
+    name:"Premium User 2 Bulan",
+    price:"Rp 10.000",
+    desc:"Premium user selama 2 bulan dengan akses fitur premium bot.",
+    img:"https://cdn.yupra.my.id/yp/nfuakqql.jpg",
+    best:false,
+    rate:4.9
+}
+
+];
+
+/* =========================
+RENDER CARD
+========================= */
+
+function renderCards(data, containerId) {
+
+    const container = document.getElementById(containerId);
+
+    container.innerHTML = '';
+
+    data.forEach(item => {
+
+        const html = `
+        <div class="food-card" onclick="showDetail('${item.name}','${item.price}','${item.desc}','${item.img}')">
+
+            ${item.best ? `
+            <div class="badge-best">
+                <i class="fas fa-fire"></i> TERLARIS
+            </div>
+            ` : ''}
+
+            <div class="card-img-box">
+                <img src="${item.img}">
+            </div>
+
+            <div class="card-details">
+
+                <div class="menu-name">
+                    ${item.name}
+                </div>
+
+                <div class="menu-rating">
+                    <i class="fas fa-star"></i>
+                    ${item.rate}
+                </div>
+
+                <div style="
+                    font-size:13px;
+                    color:#777;
+                    margin-bottom:15px;
+                    line-height:1.6;
+                ">
+                    ${item.desc}
+                </div>
+
+                <div class="price-row">
+
+                    <div class="price">
+                        ${item.price}
+                    </div>
+
+                    <button class="btn-add">
+                        <i class="fas fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+        `;
+
+        container.innerHTML += html;
+
+    });
+
+}
+
+/* =========================
+DETAIL POPUP
+========================= */
+
+function showDetail(name, price, desc, img) {
+
+    const wa = `https://wa.me/6281234567890?text=Saya%20ingin%20membeli%20${encodeURIComponent(name)}`;
+
+    const popup = document.createElement('div');
+
+    popup.innerHTML = `
+    <div id="popupDetail" style="
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.7);
+        z-index:99999;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+    ">
+
+        <div style="
+            background:#fff;
+            width:100%;
+            max-width:420px;
+            border-radius:25px;
+            overflow:hidden;
+        ">
+
+            <img src="${img}" style="
+                width:100%;
+                height:220px;
+                object-fit:cover;
+            ">
+
+            <div style="padding:25px;">
+
+                <div style="
+                    font-size:24px;
+                    font-weight:700;
+                    margin-bottom:10px;
+                ">
+                    ${name}
+                </div>
+
+                <div style="
+                    font-size:22px;
+                    font-weight:700;
+                    color:#c5a065;
+                    margin-bottom:15px;
+                ">
+                    ${price}
+                </div>
+
+                <div style="
+                    color:#666;
+                    line-height:1.7;
+                    margin-bottom:25px;
+                ">
+                    ${desc}
+                </div>
+
+                <div style="display:flex; gap:10px;">
+
+                    <button onclick="closePopup()" style="
+                        flex:1;
+                        height:50px;
+                        border:none;
+                        border-radius:15px;
+                        background:#eee;
+                        font-weight:700;
+                    ">
+                        Tutup
+                    </button>
+
+                    <a href="${wa}" target="_blank" style="
+                        flex:1;
+                        height:50px;
+                        background:#25D366;
+                        color:#fff;
+                        border-radius:15px;
+                        text-decoration:none;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-weight:700;
+                    ">
+                        <i class="fab fa-whatsapp" style="margin-right:8px;"></i>
+                        Buy
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    `;
+
+    document.body.appendChild(popup);
+
+}
+
+function closePopup() {
+
+    document.getElementById('popupDetail').remove();
+
+}
+
+/* =========================
+TAB
+========================= */
+
+function switchTab(type) {
+
+    document.getElementById('sewa').style.display = 'none';
+    document.getElementById('minuman').style.display = 'none';
+
+    document.getElementById(type).style.display = 'block';
+
+    document.querySelectorAll('.nav-link')
+    .forEach(el => el.classList.remove('active'));
+
+    document.getElementById('nav-' + type)
+    .classList.add('active');
+
+}
+
+/* =========================
+SIDEBAR
+========================= */
+
+function toggleMenu() {
+
+    document.getElementById('sidebar')
+    .classList.toggle('active');
+
+    document.querySelector('.menu-overlay')
+    .classList.toggle('active');
+
+}
+
+function closeMenuMobile() {
+
+    if(window.innerWidth <= 992) {
+        toggleMenu();
+    }
+
+}
+
+/* =========================
+INIT
+========================= */
+
+renderCards(paketHemat, 'grid-hemat');
+renderCards(paketPremium, 'grid-premium');
+renderCards(paketGroup, 'grid-group');
+renderCards(minuman, 'grid-minuman');
+
+</script>
+</body>
+</html>
