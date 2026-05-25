@@ -277,178 +277,88 @@ Website layanan bot WhatsApp, premium user, dan suntik sosial media otomatis.
 </div>
 
 <!-- SEWA -->
-
 <section id="sewa" class="section active">
-
-<div class="section-title">
-Paket Sewa Bot
-</div>
-
+<div class="section-title">Paket Sewa Bot</div>
 <div class="grid">
-
 <div class="card">
 <img src="https://cdn.yupra.my.id/yp/nfuakqql.jpg">
-
 <div class="card-body">
-
-<div class="card-title">
-Paket Hemat 1 Bulan
-</div>
-
-<div class="card-desc">
-Sewa bot WhatsApp selama 1 bulan.
-</div>
-
-<div class="card-price">
-Rp10.000
-</div>
-
-<button onclick="buy('Paket Hemat 1 Bulan')">
-Beli Sekarang
-</button>
-
+<div class="card-title">Paket Hemat 1 Bulan</div>
+<div class="card-desc">Sewa bot WhatsApp selama 1 bulan.</div>
+<div class="card-price">Rp10.000</div>
+<button onclick="buy('Paket Hemat 1 Bulan')">Beli Sekarang</button>
 </div>
 </div>
 
 <div class="card">
 <img src="https://cdn.yupra.my.id/yp/nfuakqql.jpg">
-
 <div class="card-body">
-
-<div class="card-title">
-Paket Hemat 1 Tahun
-</div>
-
-<div class="card-desc">
-Sewa bot WhatsApp selama 1 tahun.
-</div>
-
-<div class="card-price">
-Rp80.000
-</div>
-
-<button onclick="buy('Paket Hemat 1 Tahun')">
-Beli Sekarang
-</button>
-
+<div class="card-title">Paket Hemat 1 Tahun</div>
+<div class="card-desc">Sewa bot WhatsApp selama 1 tahun.</div>
+<div class="card-price">Rp80.000</div>
+<button onclick="buy('Paket Hemat 1 Tahun')">Beli Sekarang</button>
 </div>
 </div>
-
 </div>
-
 </section>
 
 <!-- PREMIUM -->
-
 <section id="premium" class="section">
-
-<div class="section-title">
-Premium User
-</div>
-
+<div class="section-title">Premium User</div>
 <div class="grid">
 
 <div class="card">
-
 <img src="https://cdn.yupra.my.id/yp/nfuakqql.jpg">
-
 <div class="card-body">
-
-<div class="card-title">
-Premium 1 Bulan
+<div class="card-title">Premium 1 Bulan</div>
+<div class="card-desc">Akses premium user selama 1 bulan.</div>
+<div class="card-price">Rp5.000</div>
+<button onclick="buy('Premium 1 Bulan')">Beli Sekarang</button>
 </div>
-
-<div class="card-desc">
-Akses premium user selama 1 bulan.
-</div>
-
-<div class="card-price">
-Rp5.000
-</div>
-
-<button onclick="buy('Premium 1 Bulan')">
-Beli Sekarang
-</button>
-
-</div>
-
 </div>
 
 <div class="card">
-
 <img src="https://cdn.yupra.my.id/yp/nfuakqql.jpg">
-
 <div class="card-body">
-
-<div class="card-title">
-Premium 2 Bulan
+<div class="card-title">Premium 2 Bulan</div>
+<div class="card-desc">Akses premium user selama 2 bulan.</div>
+<div class="card-price">Rp10.000</div>
+<button onclick="buy('Premium 2 Bulan')">Beli Sekarang</button>
 </div>
-
-<div class="card-desc">
-Akses premium user selama 2 bulan.
-</div>
-
-<div class="card-price">
-Rp10.000
-</div>
-
-<button onclick="buy('Premium 2 Bulan')">
-Beli Sekarang
-</button>
-
 </div>
 
 </div>
-
-</div>
-
 </section>
 
 <!-- SMM -->
-
 <section id="smm" class="section">
-
-<div class="section-title">
-Suntik Sosmed
-</div>
+<div class="section-title">Suntik Sosmed</div>
 
 <div class="smm-box">
 
 <select id="service">
-<option value="">Loading layanan...</option>
+<option>Loading layanan...</option>
 </select>
 
 <input type="text" id="target" placeholder="Masukkan link target">
-
 <input type="number" id="quantity" placeholder="Masukkan jumlah">
 
-<button onclick="orderSMM()">
-Buat Pesanan
-</button>
+<button onclick="orderSMM()">Buat Pesanan</button>
 
-<div class="status" id="statusBox">
-Belum ada pesanan
-</div>
+<div class="status" id="statusBox">Belum ada pesanan</div>
 
 </div>
-
 </section>
 
 <!-- PAYMENT -->
-
 <section id="payment" class="section">
-
-<div class="section-title">
-Metode Pembayaran
-</div>
+<div class="section-title">Metode Pembayaran</div>
 
 <div class="payment-grid">
 
 <div class="payment-card">
 <h3>QRIS</h3>
-
-<img src="https://cdn.yupra.my.id/yp/nk9tfpgk.jpg"
-style="width:100%;border-radius:15px;">
+<img src="https://cdn.yupra.my.id/yp/nk9tfpgk.jpg" style="width:100%;border-radius:15px;">
 </div>
 
 <div class="payment-card">
@@ -467,7 +377,6 @@ style="width:100%;border-radius:15px;">
 </div>
 
 </div>
-
 </section>
 
 <footer>
@@ -476,155 +385,91 @@ style="width:100%;border-radius:15px;">
 
 <script>
 
-/* SECTION */
-
+/* SWITCH SECTION */
 function showSection(id){
-
-document.querySelectorAll('.section')
-.forEach(el => {
-el.classList.remove('active');
-});
-
-document.getElementById(id)
-.classList.add('active');
-
+document.querySelectorAll('.section').forEach(el=>el.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 }
 
 /* BUY */
-
 function buy(name){
-
-window.open(
-`https://wa.me/6283875543395?text=Saya ingin membeli ${encodeURIComponent(name)}`,
-'_blank'
-);
-
+window.open(`https://wa.me/6283875543395?text=Saya ingin membeli ${encodeURIComponent(name)}`,'_blank');
 }
 
-/* LOAD SERVICES */
-
+/* FIXED LOAD SERVICES */
 async function loadServices(){
 
 try{
 
 const response = await fetch('/api/services');
-
 const data = await response.json();
 
 const select = document.getElementById('service');
 
-select.innerHTML = '';
+select.innerHTML = '<option>Loading...</option>';
 
-if(!Array.isArray(data)){
-
-select.innerHTML = `
-<option>
-Gagal memuat layanan
-</option>
-`;
-
+// ✅ FIX UTAMA DI SINI
+if(!data.status || !Array.isArray(data.services)){
+select.innerHTML = '<option>Gagal memuat layanan</option>';
 return;
-
 }
 
-data.forEach(service => {
+select.innerHTML = '';
+
+data.services.forEach(service => {
 
 const option = document.createElement('option');
-
-option.value = service.id || service.service;
-
-option.textContent =
-`${service.name} - Rp${service.price || 0}`;
+option.value = service.id;
+option.textContent = `${service.name} - Rp${service.price || 0}`;
 
 select.appendChild(option);
 
 });
 
 }catch(err){
-
-document.getElementById('service').innerHTML = `
-<option>
-Error load layanan
-</option>
-`;
-
+document.getElementById('service').innerHTML = '<option>Error load layanan</option>';
 }
 
 }
 
 /* ORDER */
-
 async function orderSMM(){
 
 const service = document.getElementById('service').value;
-
 const target = document.getElementById('target').value;
-
 const quantity = document.getElementById('quantity').value;
-
 const statusBox = document.getElementById('statusBox');
 
 if(!service || !target || !quantity){
-
-statusBox.innerHTML = `
-Lengkapi semua data
-`;
-
+statusBox.innerHTML = "Lengkapi semua data";
 return;
-
 }
 
-statusBox.innerHTML = `
-Membuat pesanan...
-`;
+statusBox.innerHTML = "Membuat pesanan...";
 
 try{
 
 const response = await fetch('/api/order',{
-
 method:'POST',
-
-headers:{
-'Content-Type':'application/json'
-},
-
-body:JSON.stringify({
-service,
-target,
-quantity
-})
-
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({service,target,quantity})
 });
 
 const data = await response.json();
 
 if(data.order){
-
-statusBox.innerHTML = `
-✅ Pesanan berhasil<br><br>
-ID Order: ${data.order}
-`;
-
+statusBox.innerHTML = `✅ Pesanan berhasil<br><br>ID Order: ${data.order}`;
 }else{
-
-statusBox.innerHTML = `
-❌ ${JSON.stringify(data)}
-`;
-
+statusBox.innerHTML = `❌ ${JSON.stringify(data)}`;
 }
 
 }catch(err){
-
-statusBox.innerHTML = `
-Error membuat pesanan
-`;
-
+statusBox.innerHTML = "Error membuat pesanan";
 }
 
 }
 
 /* INIT */
-
 loadServices();
 
 </script>
