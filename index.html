@@ -8,21 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* ===== TIDAK DIUBAH ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0f172a;color:white;overflow-x:hidden;}
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#0f172a;
-color:white;
-overflow-x:hidden;
-}
-
-/* HEADER */
 header{
 width:100%;
 padding:20px;
@@ -36,17 +25,9 @@ z-index:999;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.logo{
-font-size:22px;
-font-weight:700;
-color:#60a5fa;
-}
+.logo{font-size:22px;font-weight:700;color:#60a5fa;}
 
-.menu{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
+.menu{display:flex;gap:10px;flex-wrap:wrap;}
 
 .menu button{
 padding:10px 18px;
@@ -59,105 +40,25 @@ transition:0.3s;
 font-weight:500;
 }
 
-.menu button:hover{
-background:#2563eb;
-}
+.menu button:hover{background:#2563eb;}
 
-/* HERO */
 .hero{
 padding:70px 20px;
 text-align:center;
 }
 
-.hero h1{
-font-size:42px;
-margin-bottom:15px;
-}
+.hero h1{font-size:42px;margin-bottom:15px;}
+.hero p{max-width:700px;margin:auto;color:#cbd5e1;}
 
-.hero p{
-max-width:700px;
-margin:auto;
-color:#cbd5e1;
-line-height:1.8;
-}
+.section{padding:30px 20px;display:none;}
+.section.active{display:block;}
 
-/* SECTION */
-.section{
-padding:30px 20px;
-display:none;
-}
+.section-title{font-size:28px;font-weight:700;margin-bottom:25px;}
 
-.section.active{
-display:block;
-}
-
-.section-title{
-font-size:28px;
-font-weight:700;
-margin-bottom:25px;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-/* CARD */
-.card{
-background:#1e293b;
-border-radius:20px;
-overflow:hidden;
-transition:0.3s;
-border:1px solid rgba(255,255,255,0.05);
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.card-body{
-padding:18px;
-}
-
-.card-title{
-font-size:18px;
-font-weight:700;
-margin-bottom:10px;
-}
-
-.card-desc{
-font-size:14px;
-color:#cbd5e1;
-line-height:1.6;
-margin-bottom:15px;
-}
-
-.card-price{
-font-size:20px;
-font-weight:700;
-color:#60a5fa;
-margin-bottom:15px;
-}
-
-.card button{
-width:100%;
-height:45px;
-border:none;
-border-radius:12px;
-background:#2563eb;
-color:white;
-font-weight:600;
-cursor:pointer;
-}
-
-/* SMM */
 .smm-box{
 background:#1e293b;
 padding:20px;
 border-radius:20px;
-margin-bottom:25px;
 }
 
 .smm-box select,
@@ -172,44 +73,18 @@ padding:0 15px;
 color:white;
 }
 
-/* STATUS */
 .status{
 margin-top:15px;
 padding:15px;
 border-radius:12px;
 background:#0f172a;
-font-size:14px;
-line-height:1.7;
 }
 
-/* PAYMENT */
-.payment-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-margin-top:20px;
-}
-
-.payment-card{
-background:#1e293b;
-padding:20px;
-border-radius:20px;
-text-align:center;
-}
-
-/* FOOTER */
 footer{
 padding:40px 20px;
 text-align:center;
 color:#94a3b8;
 }
-
-/* MOBILE */
-@media(max-width:768px){
-.hero h1{font-size:30px;}
-.menu{justify-content:center;}
-}
-
 </style>
 </head>
 
@@ -231,20 +106,8 @@ color:#94a3b8;
 <p>Website layanan bot WhatsApp, premium user, dan suntik sosial media otomatis.</p>
 </div>
 
-<!-- SEWA -->
-<section id="sewa" class="section active">
-<div class="section-title">Paket Sewa Bot</div>
-<div class="grid"></div>
-</section>
-
-<!-- PREMIUM -->
-<section id="premium" class="section">
-<div class="section-title">Premium User</div>
-<div class="grid"></div>
-</section>
-
 <!-- SMM -->
-<section id="smm" class="section">
+<section id="smm" class="section active">
 <div class="section-title">Suntik Sosmed</div>
 
 <div class="smm-box">
@@ -253,24 +116,11 @@ color:#94a3b8;
 <option>Loading layanan...</option>
 </select>
 
-<input type="text" id="target" placeholder="Masukkan link target">
-<input type="number" id="quantity" placeholder="Masukkan jumlah">
-
-<button onclick="orderSMM()">Buat Pesanan</button>
+<input type="text" id="target" placeholder="Masukkan link">
+<input type="number" id="quantity" placeholder="Jumlah">
 
 <div class="status" id="statusBox">Belum ada pesanan</div>
 
-</div>
-</section>
-
-<!-- PAYMENT -->
-<section id="payment" class="section">
-<div class="section-title">Metode Pembayaran</div>
-
-<div class="payment-grid">
-<div class="payment-card">QRIS</div>
-<div class="payment-card">DANA</div>
-<div class="payment-card">GoPay</div>
 </div>
 </section>
 
@@ -286,74 +136,64 @@ document.querySelectorAll('.section').forEach(e=>e.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
 
-/* BUY */
-function buy(name){
-window.open(`https://wa.me/6283875543395?text=${encodeURIComponent(name)}`,'_blank');
-}
-
-/* ================= FIX LOAD SERVICES (STABLE + ANTI ERROR) ================= */
+/* ================= FIX LOAD SERVICES (CORE FIX) ================= */
 async function loadServices(){
 
 try{
 
-const res = await fetch('/api/services', {
-cache: "no-store"
-});
+const res = await fetch('/api/services', { cache: "no-store" });
 
-const text = await res.text();
-
-let data;
-
-try{
-data = JSON.parse(text);
-}catch(e){
-console.log("JSON ERROR:", text);
-document.getElementById('service').innerHTML =
-'<option>Response error API</option>';
-return;
-}
+const data = await res.json();
 
 const select = document.getElementById('service');
 
-if(!data || !data.status || !Array.isArray(data.services)){
-select.innerHTML = '<option>Gagal load services</option>';
+console.log("API RESPONSE:", data);
+
+/* 🔥 FIX UTAMA: jangan pakai status saja */
+const services = data?.services;
+
+if(!Array.isArray(services)){
+select.innerHTML = '<option>Data services tidak valid</option>';
 return;
 }
 
-servicesData = data.services;
+/* simpan */
+servicesData = services;
 
+/* reset */
 select.innerHTML = '<option value="">Pilih layanan</option>';
 
 const frag = document.createDocumentFragment();
 
-for(let i=0;i<data.services.length;i++){
+/* 🔥 RENDER AMAN */
+services.forEach(s => {
 
-const s = data.services[i];
+if(!s || !s.id || !s.name) return;
 
 const opt = document.createElement('option');
 opt.value = s.id;
-opt.textContent = `${s.name} - Rp${s.price}`;
+opt.textContent = `${s.name} - Rp${s.price || 0}`;
 
 frag.appendChild(opt);
 
-}
+});
 
 select.appendChild(frag);
 
-console.log("Services loaded:", servicesData.length);
+console.log("TOTAL SERVICES:", servicesData.length);
 
 }catch(err){
 
-console.log("LOAD ERROR:", err);
+console.log("ERROR LOAD:", err);
 
 document.getElementById('service').innerHTML =
-'<option>Error koneksi API</option>';
+'<option>Error load services</option>';
 
 }
 
 }
 
-/* ORDER */
+/* ORDER (tidak diubah inti) */
 async function orderSMM(){
 
 const service = document.getElementById('service').value;
@@ -362,11 +202,11 @@ const quantity = document.getElementById('quantity').value;
 const statusBox = document.getElementById('statusBox');
 
 if(!service || !target || !quantity){
-statusBox.innerHTML = "Lengkapi semua data";
+statusBox.innerHTML = "Lengkapi data";
 return;
 }
 
-statusBox.innerHTML = "Membuat pesanan...";
+statusBox.innerHTML = "Memproses...";
 
 try{
 
@@ -378,11 +218,9 @@ body:JSON.stringify({service,target,quantity})
 
 const data = await res.json();
 
-if(data.order){
-statusBox.innerHTML = `✅ Order sukses<br>ID: ${data.order}`;
-}else{
-statusBox.innerHTML = `❌ Gagal`;
-}
+statusBox.innerHTML = data.order
+? `✅ Sukses ID: ${data.order}`
+: `❌ Gagal`;
 
 }catch(e){
 statusBox.innerHTML = "Error server";
